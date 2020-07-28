@@ -1,6 +1,7 @@
 const contentTarget = document.querySelector(".entry")
 const eventHub = document.querySelector("#state-fair")
 
+// Listener for Ride Tickets
 eventHub.addEventListener("click", clickEvent => {
     const clickId = clickEvent.target.id
 
@@ -11,6 +12,7 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+// Listener for Food Tickets
 eventHub.addEventListener("click", clickEvent => {
     const clickId = clickEvent.target.id
 
@@ -20,11 +22,24 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+// Listener for Game Tickets
+eventHub.addEventListener("click", clickEvent => {
+    const clickId = clickEvent.target.id
+
+    if (clickId ==="gameTicket") {
+        const gameEvent = new CustomEvent("gameTicketPurchased")
+        eventHub.dispatchEvent(gameEvent)
+    }
+})
+
+
+
 export const TicketBooth = () => {
     contentTarget.innerHTML = `
         <div class="ticketBooth">
             <button id="rideTicket">Ride Ticket</button>
             <button id="foodTicket">Food Ticket</button>
+            <button id="gameTicket">Game Ticket</button>
         </div>
     `
 }
